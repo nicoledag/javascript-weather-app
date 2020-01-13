@@ -20,14 +20,6 @@ const updateUI = (data) => {
         </div>
         `;
 
-    forecastDetails.innerHTML =  `
-    <h5 class="my-3">${forecast[0].Date.toLocaleString()}</h5>
-    <div class="my-3">Morning</div>
-    <div class="display-4 my-4">
-        <span>temp</span>
-        <span>&deg;F</span>
-    </div>
-    `;
 };
 
 const updateCity  = async (city) => {
