@@ -16,8 +16,21 @@ const getWeather = async (id) => {
 
 };
 
-// getWeather('349727')
+// getWeather(349727)
 
+const get5DayForecast = async (id) => {
+    const base = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/'
+    const query = `${id}?apikey=${key}&language=en-us`
+
+    const response = await fetch(base + query);
+    const data = await response.json();
+
+    console.log(data.DailyForecasts);
+    return data.DailyForecasts;
+
+};
+
+get5DayForecast('349727');
 
 const getCity = async (city) => {
     const base = 'http://dataservice.accuweather.com/locations/v1/cities/search'

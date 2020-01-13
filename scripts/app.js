@@ -22,7 +22,7 @@ cityForm.addEventListener('submit', e => {
     const city = cityForm.city.value.trim();
     cityForm.reset();
 
-    //update the ui with new city
+    // update the ui with new city
     updateCity(city)
     .then(data => console.log(data))
     .catch(err => console.log(err));
