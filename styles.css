@@ -2,9 +2,37 @@
 body {
     background: #eeedec;
     letter-spacing: 0.2em;
-    font-size: 0.8em;
+    font-size: 14px;
 }
 
-.container {
+ .container-daily {
     max-width: 400px;
+    height: 100%;
+    border: 1px solid black;
+    margin: auto;
+    text-align: center;
 }
+
+form {
+    background-color: RGB(18, 0, 181);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.details {
+    background-color: RGB(0, 161, 215);
+    padding-top: 10px;
+}
+.temp {
+    background-color: RGB(87, 248, 238);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+/*
+.container-forecast {
+    max-width: 100%;
+    height: 700px;
+    border: 1px solid black;
+} */
+
+
+

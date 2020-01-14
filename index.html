@@ -11,27 +11,30 @@
 </head>
 <body>
 
-    <div class="container my-5 mx-auto">
-        <h1 class="text-muted text-center my-4">Weather</h1>
-        <form class="change-location my-4 text-center text-muted">
-            <label for="city">Enter a location for weather information</label>
-            <input type="text" name="city" class="form-control p-4">
-        </form>
+    <div class="container-daily">
 
-    <div class="card shadow-lg rounded d-none">
-            <img src="https://via.placeholder.com/400x300" class="time card-img-top">
-            <div class="icon bg-light mx-auto text-center"></div>
-      
-        <div class="text-muted text-uppercase text-center details">
-            <h5 class="my-3">City name</h5>
-            <div class="my-3">Weater condition</div>
-            <div class="display-4 my-4">
+        <form class="change city">
+           <label for="city"></label>
+           <input type="city" name="city" placeholder="Enter city">
+           <input type="submit" value="submit">
+        </form>
+        
+        <div class="card">
+            <img src="https://via.placeholder.com/200x100">
+        </div>
+
+        <div class="details">
+            <div class="cityinfo">
+                <h3>City</h3>
+                <h3>As of 8:58 pm EST</h3>
+            </div>
+            <div class="temp">
                 <span>temp</span>
                 <span>&deg;F</span>
             </div>
         </div>
-     </div>
-   
+
+
     </div>
 
 
