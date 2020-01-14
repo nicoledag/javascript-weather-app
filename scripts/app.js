@@ -2,6 +2,10 @@ const cityForm = document.querySelector('form');
 const card = document.querySelector('.card');
 const details = document.querySelector('.details');
 const forecastDetails = document.querySelector('.details-forecast');
+const now = new Date();
+console.log(now);
+const formatTime = now.toLocaleString();
+
 
 const updateUI = (data) => {
     const cityDetails = data.cityDetails;
@@ -15,6 +19,7 @@ const updateUI = (data) => {
         <div class="cityinfo">
         <h3>${cityDetails.EnglishName}</h3>
         <h3>${weather.WeatherText}</h3>
+        <h5>As of ${formatTime}</h5>
         </div>
         <div class="temp">
             <span>${weather.Temperature.Imperial.Value}</span>

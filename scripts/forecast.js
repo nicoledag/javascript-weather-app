@@ -2,7 +2,7 @@
 //.then method once it is resolved to fire a function.
 //.catch method to fire a callback function when there is an error.
 
-const key = '0h9RQLsg06jDPMnH9HFBY9eAHZACyIZA';
+const key = 'rBAry5a3Loc6NtN7unhjPwPhyvTIuZ6y';
 
 const getWeather = async (id) => {
     const base = 'http://dataservice.accuweather.com/currentconditions/v1/'
