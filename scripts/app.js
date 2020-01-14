@@ -18,7 +18,7 @@ const updateUI = (data) => {
     // update details template
     details.innerHTML = `
         <div class="cityinfo">
-        <h3>${cityDetails.EnglishName}</h3>
+        <h1>${cityDetails.EnglishName}</h1>
         <h3>${weather.WeatherText}</h3>
         <h5>As of ${formatTime}</h5>
         </div>

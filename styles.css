@@ -3,6 +3,7 @@ body {
     background: white;
     letter-spacing: 0.2em;
     font-size: 14px;
+    color: white;
 }
 
  .container-daily {
@@ -11,6 +12,10 @@ body {
     border: 1px solid black;
     margin: auto;
     text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
 }
 
 form {
@@ -23,6 +28,7 @@ form {
     background-color: RGB(0, 161, 215);
     padding-top: 10px;
     height: 100%;
+    font-weight: bold;
 }
 .temp {
     background-color: RGB(0, 161, 215);
@@ -31,7 +37,8 @@ form {
 }
 
 span {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 /*
 .container-forecast {
