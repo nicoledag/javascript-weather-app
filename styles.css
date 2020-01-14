@@ -5,6 +5,8 @@ body {
     font-size: 14px;
     color: white;
     background-color: RGB(18, 0, 181);
+    /* font-family: Helvetica; */
+    font-family: Tahoma;
 }
 
  .container-daily {
@@ -29,11 +31,17 @@ form {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.time {
+    height: 100%;
+    width: 100%;
+}
+
 .details {
     background-color: RGB(0, 161, 215);
-    padding-top: 10px;
     height: 100%;
     font-weight: bold;
+    padding-top: 40px;
 }
 .temp {
     background-color: RGB(0, 161, 215);
@@ -53,4 +61,13 @@ span {
 } */
 
 
+.icon {
+    position: relative;
+    margin: auto;
+    top: -50px;
+    border-radius: 50%;
+    width: 100px;
+    margin-bottom: -100px;
+    background-color: white;
+}
 
