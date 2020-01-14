@@ -12,9 +12,11 @@ const updateUI = (data) => {
 
     // update details template
     details.innerHTML = `
-        <h5 class="my-3">${cityDetails.EnglishName}</h5>
-        <div class="my-3">${weather.WeatherText}</div>
-        <div class="display-4 my-4">
+        <div class="cityinfo">
+        <h3>${cityDetails.EnglishName}</h3>
+        <h3>${weather.WeatherText}</h3>
+        </div>
+        <div class="temp">
             <span>${weather.Temperature.Imperial.Value}</span>
             <span>&deg;F</span>
         </div>
