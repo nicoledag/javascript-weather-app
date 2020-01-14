@@ -5,15 +5,19 @@ const forecastDetails = document.querySelector('.details-forecast');
 const now = new Date();
 console.log(now);
 const formatTime = now.toLocaleString();
+const time = document.querySelector('img.time');
+const icon = document.querySelector('.icon img');
 
 
 const updateUI = (data) => {
-    const cityDetails = data.cityDetails;
-    const weather = data.weather;
-    const forecast = data.forecast;
-    console.log(forecast);
+    // const cityDetails = data.cityDetails;
+    // const weather = data.weather;
+    // const forecast = data.forecast;
+ 
+    //destructure properties
+    const { cityDetails, weather, forecast } = data;
     console.log(weather);
-
+    console.log(forecast);
 
     // update details template
     details.innerHTML = `
@@ -33,10 +37,6 @@ const updateUI = (data) => {
         //remove the d-none class if present
         if(card.classList.contains('d-none')){
             card.classList.remove('d-none');
-        };
-
-        if(details.classList.contains('d-none')){
-            details.classList.remove('d-none');
         };
 
 };
