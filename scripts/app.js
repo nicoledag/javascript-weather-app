@@ -19,17 +19,20 @@ const updateUI = (data) => {
     details.innerHTML = `
         <div class="cityinfo">
         <h1>${cityDetails.EnglishName}</h1>
-        <h3>${weather.WeatherText}</h3>
         <h5>As of ${formatTime}</h5>
         </div>
         <div class="temp">
             <span>${weather.Temperature.Imperial.Value}</span>
             <span>&deg;F</span>
+            <h3>${weather.WeatherText}</h3>
             <h4>Feels like ${weather.RealFeelTemperature.Imperial.Value}&deg;F</h4>
             <h4>UV Index ${weather.UVIndex} of 10</h4>
         </div>
         `;
 
+        //remove the d-none class if present
+
+        
 };
 
 const updateCity  = async (city) => {
