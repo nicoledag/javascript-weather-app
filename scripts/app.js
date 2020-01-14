@@ -31,8 +31,14 @@ const updateUI = (data) => {
         `;
 
         //remove the d-none class if present
+        if(card.classList.contains('d-none')){
+            card.classList.remove('d-none');
+        };
 
-        
+        if(details.classList.contains('d-none')){
+            details.classList.remove('d-none');
+        };
+
 };
 
 const updateCity  = async (city) => {
