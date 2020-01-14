@@ -27,6 +27,7 @@ form {
 .temp {
     background-color: RGB(0, 161, 215);
     height: 100%;
+    padding-bottom: 10px;
 }
 
 span {

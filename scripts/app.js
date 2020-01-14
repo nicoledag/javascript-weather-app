@@ -12,6 +12,7 @@ const updateUI = (data) => {
     const weather = data.weather;
     const forecast = data.forecast;
     console.log(forecast);
+    console.log(weather);
 
 
     // update details template
@@ -24,6 +25,8 @@ const updateUI = (data) => {
         <div class="temp">
             <span>${weather.Temperature.Imperial.Value}</span>
             <span>&deg;F</span>
+            <h4>Feels like ${weather.RealFeelTemperature.Imperial.Value}&deg;F</h4>
+            <h4>UV Index ${weather.UVIndex} of 10</h4>
         </div>
         `;
 
