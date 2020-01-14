@@ -7,6 +7,7 @@ console.log(now);
 const formatTime = now.toLocaleString();
 const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
+const table = document.querySelector('table')
 
 
 const updateUI = (data) => {
@@ -34,6 +35,68 @@ const updateUI = (data) => {
         </div>
         `;
 
+    table.innerHTML = `
+    <table>
+    <tr>
+      <th>Day</th>
+      <th>Description</th>
+      <th>High/Low</th>
+      <th>Precip</th>
+      <th>Wind</th>
+      <th>Humidity</th>
+    </tr>
+    <tr>
+      <td>Today Date</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TUE</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>WED</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>THU</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>FRI</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>SAT</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+    `;
+
         //update the night/day and icon image
         const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
         icon.setAttribute('src', iconSrc);
@@ -48,6 +111,12 @@ const updateUI = (data) => {
         if(card.classList.contains('d-none')){
             card.classList.remove('d-none');
         };
+
+        if(table.classList.contains('d-none')){
+            table.classList.remove('d-none');
+        };
+
+
 
 };
 
