@@ -20,7 +20,7 @@ const getWeather = async (id) => {
 
 const getForecast = async (id) => {
     const base = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/'
-    const query = `${id}?apikey=${key}&language=en-us`
+    const query = `${id}?apikey=${key}&language=en-us&details=true`
 
     const response = await fetch(base + query);
     const data = await response.json();

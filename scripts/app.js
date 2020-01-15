@@ -19,6 +19,33 @@ const updateUI = (data) => {
     const { cityDetails, weather, forecast } = data;
     console.log(weather);
     console.log(forecast);
+    // debugger;
+
+
+    let day = null;
+    switch (new Date().getDay()) {
+      case 0:
+        day = "SUN";
+        break;
+      case 1:
+        day = "MON";
+        break;
+      case 2:
+          day = "TUES";
+        break;
+      case 3:
+        day = "WED";
+        break;
+      case 4:
+        day = "THUR";
+        break;
+      case 5:
+        day = "FRI";
+        break;
+      case 6:
+        day = "SAT";
+    }
+    
 
     // update details template
     details.innerHTML = `
@@ -35,6 +62,7 @@ const updateUI = (data) => {
         </div>
         `;
 
+    // update table template
     table.innerHTML = `
     <table>
     <tr>
@@ -46,8 +74,8 @@ const updateUI = (data) => {
       <th>Humidity</th>
     </tr>
     <tr>
-      <td>Today Date</td>
-      <td></td>
+      <td>${day}</td>
+      <td>${weather.WeatherText}</td>
       <td></td>
       <td></td>
       <td></td>
@@ -102,9 +130,9 @@ const updateUI = (data) => {
         icon.setAttribute('src', iconSrc);
 
         if(weather.IsDayTime === true ){
-            time.src = './img/day.svg'
+            time.src = './img/cloud.jpg'
         }else{
-            time.src = './img/night.svg'
+            time.src = './img/night-stars.jpg'
         }
 
         //remove the d-none class if present
