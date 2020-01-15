@@ -10,7 +10,7 @@ const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
 const table = document.querySelector('table')
 const tableHeader = document.querySelector('.table-header')
-console.log(tableHeader);
+const currentTime = document.querySelector('.current-time')
 
 
 const updateUI = (data) => {
@@ -155,13 +155,14 @@ const updateUI = (data) => {
         four = "SAT";
     }
 
-  
+    currentTime.innerHTML = `
+    <h5>As of ${formatTime}</h5>
+    `;
 
     // update details template
     details.innerHTML = `
         <div class="cityinfo">
         <h1>${cityDetails.EnglishName}</h1>
-        <h5>As of ${formatTime}</h5>
         </div>
         <div class="temp">
             <span>${weather.Temperature.Imperial.Value}</span>
@@ -253,7 +254,11 @@ const updateUI = (data) => {
 
         if(tableHeader.classList.contains('d-none')){
           tableHeader.classList.remove('d-none');
-      };
+        };
+
+          if(currentTime.classList.contains('d-none')){
+            currentTime.classList.remove('d-none');
+        };
 
 
 
