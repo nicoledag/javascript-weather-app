@@ -121,3 +121,23 @@ table, th, td {
     position: absolute;
     margin-top: -100px;
   }
+
+  @media only screen and (max-width: 866px) { 
+    .flex {
+        flex-direction: column;
+       }
+     
+       .left {
+         width: 100%;
+       }
+     
+       .right {
+         width: 100%;
+         margin-top: 50px;
+         margin-left: 10px;
+         margin-right: 10px;
+       }
+     
+
+  }
+
