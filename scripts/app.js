@@ -9,6 +9,8 @@ const formatTime = now.toLocaleString();
 const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
 const table = document.querySelector('table')
+const tableHeader = document.querySelector('.table-header')
+console.log(tableHeader);
 
 
 const updateUI = (data) => {
@@ -22,70 +24,138 @@ const updateUI = (data) => {
     console.log(forecast);
     // debugger;
 
-    let zero = forecast[0].Date;
-    console.log(zero)
+    let test = new Date(forecast[0].Date).getTime()
 
-    const one = forecast[1];
-    const two = forecast[2];
-    const three = forecast[3];
-    const four = forecast[4];
+    let sunrise = forecast[0].Sun.EpochRise 
+    let sunset = forecast[0].Sun.EpochSet 
+    console.log(sunset)
 
+    let diff = test > sunset;
+    console.log(diff); 
+  
 
-
-    var day = null;
-    switch (currentDay) {
+    let zero = new Date(forecast[0].Date).getDay();
+    switch (zero) {
       case 0:
-        day = "SUN";
+        zero = "SUN";
         break;
       case 1:
-        day = "MON";
+        zero = "MON";
         break;
       case 2:
-          day = "TUES";
+        zero = "TUES";
         break;
       case 3:
-        day = "WEDS";
+        zero = "WEDS";
         break;
       case 4:
-        day = "THUR";
+        zero = "THUR";
         break;
       case 5:
-        day = "FRI";
+        zero = "FRI";
         break;
       case 6:
-        day = "SAT";
+        zero = "SAT";
+    }
+
+    let one = new Date(forecast[1].Date).getDay();
+    switch (one) {
+      case 0:
+        one = "SUN";
+        break;
+      case 1:
+        one = "MON";
+        break;
+      case 2:
+        one = "TUES";
+        break;
+      case 3:
+        one = "WEDS";
+        break;
+      case 4:
+        one = "THUR";
+        break;
+      case 5:
+        one = "FRI";
+        break;
+      case 6:
+        one = "SAT";
+    }
+
+    let two = new Date(forecast[2].Date).getDay();
+    switch (two) {
+      case 0:
+        two = "SUN";
+        break;
+      case 1:
+        two = "MON";
+        break;
+      case 2:
+        two = "TUES";
+        break;
+      case 3:
+        two = "WEDS";
+        break;
+      case 4:
+        two = "THUR";
+        break;
+      case 5:
+        two = "FRI";
+        break;
+      case 6:
+        two = "SAT";
     }
     
-    var followingDay = null;
-    var dayTwo = null;
-    var dayThree = null;
-    var dayFour = null;
-      switch(day){
-        case 'MON':
-          followingDay = "TUES";
-          break;
-        case 'TUES':
-          followingDay = "WEDS"
-          dayTwo = "THURS";
-          dayThree = "FRI";
-          dayFour = "SAT";
-          break;
-        case 'WEDS':
-          followingDay = "THUR";
-          break;
-        case 'THUR':
-          followingDay = "FRI";
-          break;
-        case 'FRI':
-        followingDay = "SAT";
+
+    let three = new Date(forecast[3].Date).getDay();
+    switch (three) {
+      case 0:
+        three = "SUN";
         break;
-        case 'SAT':
-          followingDay = "SUN";
-          break;
-        case 'SUN':
-          followingDay = "MON";
-          break;
-      }
+      case 1:
+        three = "MON";
+        break;
+      case 2:
+        three = "TUES";
+        break;
+      case 3:
+        three = "WEDS";
+        break;
+      case 4:
+        three = "THUR";
+        break;
+      case 5:
+        three = "FRI";
+        break;
+      case 6:
+        three = "SAT";
+    }
+   
+    let four = new Date(forecast[4].Date).getDay();
+    switch (four) {
+      case 0:
+        four = "SUN";
+        break;
+      case 1:
+        four = "MON";
+        break;
+      case 2:
+        four = "TUES";
+        break;
+      case 3:
+        four = "WEDS";
+        break;
+      case 4:
+        four = "THUR";
+        break;
+      case 5:
+        four = "FRI";
+        break;
+      case 6:
+        four = "SAT";
+    }
+
+  
 
     // update details template
     details.innerHTML = `
@@ -103,6 +173,11 @@ const updateUI = (data) => {
         `;
 
     // update table template
+    
+    tableHeader.innerHTML = `
+      <h2>5 Day Forecast</h2>
+    `;
+    
     table.innerHTML = `
     <table>
     <tr>
@@ -114,41 +189,41 @@ const updateUI = (data) => {
       <th>Humidity</th>
     </tr>
     <tr>
-      <td>${day}</td>
-      <td>${weather.WeatherText}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>${followingDay}</td>
-      <td></td>
-      <td></td>
+      <td>${zero}</td>
+      <td>Day: ${forecast[0].Day.IconPhrase} / Night: ${forecast[0].Night.IconPhrase}</td>
+      <td>${forecast[0].Temperature.Maximum.Value} &deg;F / ${forecast[0].Temperature.Minimum.Value} &deg;F</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
     <tr>
-      <td>${dayTwo}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>${dayThree}</td>
-      <td></td>
-      <td></td>
+      <td>${one}</td>
+      <td>Day: ${forecast[1].Day.IconPhrase} / Night: ${forecast[1].Night.IconPhrase}</td>
+      <td>${forecast[1].Temperature.Maximum.Value} &deg;F / ${forecast[1].Temperature.Minimum.Value} &deg;F</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
     <tr>
-      <td>${dayFour}</td>
+      <td>${two}</td>
+      <td>Day: ${forecast[2].Day.IconPhrase} / Night: ${forecast[2].Night.IconPhrase}</td>
+      <td>${forecast[2].Temperature.Maximum.Value} &deg;F / ${forecast[2].Temperature.Minimum.Value} &deg;F</td>
       <td></td>
       <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>${three}</td>
+      <td>Day: ${forecast[3].Day.IconPhrase} / Night: ${forecast[3].Night.IconPhrase}</td>
+      <td>${forecast[3].Temperature.Maximum.Value} &deg;F / ${forecast[3].Temperature.Minimum.Value} &deg;F</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>${four}</td>
+      <td>Day: ${forecast[4].Day.IconPhrase} / Night: ${forecast[4].Night.IconPhrase}</td>
+      <td>${forecast[4].Temperature.Maximum.Value} &deg;F / ${forecast[4].Temperature.Minimum.Value} &deg;F</td>
       <td></td>
       <td></td>
       <td></td>
@@ -175,6 +250,10 @@ const updateUI = (data) => {
         if(table.classList.contains('d-none')){
             table.classList.remove('d-none');
         };
+
+        if(tableHeader.classList.contains('d-none')){
+          tableHeader.classList.remove('d-none');
+      };
 
 
 
