@@ -4,6 +4,7 @@ const details = document.querySelector('.details');
 const forecastDetails = document.querySelector('.details-forecast');
 const now = new Date();
 console.log(now);
+const currentDay = now.getDay();
 const formatTime = now.toLocaleString();
 const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
@@ -21,9 +22,18 @@ const updateUI = (data) => {
     console.log(forecast);
     // debugger;
 
+    let zero = forecast[0].Date;
+    console.log(zero)
 
-    let day = null;
-    switch (new Date().getDay()) {
+    const one = forecast[1];
+    const two = forecast[2];
+    const three = forecast[3];
+    const four = forecast[4];
+
+
+
+    var day = null;
+    switch (currentDay) {
       case 0:
         day = "SUN";
         break;
@@ -34,7 +44,7 @@ const updateUI = (data) => {
           day = "TUES";
         break;
       case 3:
-        day = "WED";
+        day = "WEDS";
         break;
       case 4:
         day = "THUR";
@@ -46,6 +56,36 @@ const updateUI = (data) => {
         day = "SAT";
     }
     
+    var followingDay = null;
+    var dayTwo = null;
+    var dayThree = null;
+    var dayFour = null;
+      switch(day){
+        case 'MON':
+          followingDay = "TUES";
+          break;
+        case 'TUES':
+          followingDay = "WEDS"
+          dayTwo = "THURS";
+          dayThree = "FRI";
+          dayFour = "SAT";
+          break;
+        case 'WEDS':
+          followingDay = "THUR";
+          break;
+        case 'THUR':
+          followingDay = "FRI";
+          break;
+        case 'FRI':
+        followingDay = "SAT";
+        break;
+        case 'SAT':
+          followingDay = "SUN";
+          break;
+        case 'SUN':
+          followingDay = "MON";
+          break;
+      }
 
     // update details template
     details.innerHTML = `
@@ -82,7 +122,7 @@ const updateUI = (data) => {
       <td></td>
     </tr>
     <tr>
-      <td>TUE</td>
+      <td>${followingDay}</td>
       <td></td>
       <td></td>
       <td></td>
@@ -90,7 +130,7 @@ const updateUI = (data) => {
       <td></td>
     </tr>
     <tr>
-      <td>WED</td>
+      <td>${dayTwo}</td>
       <td></td>
       <td></td>
       <td></td>
@@ -98,7 +138,7 @@ const updateUI = (data) => {
       <td></td>
     </tr>
     <tr>
-      <td>THU</td>
+      <td>${dayThree}</td>
       <td></td>
       <td></td>
       <td></td>
@@ -106,15 +146,7 @@ const updateUI = (data) => {
       <td></td>
     </tr>
     <tr>
-      <td>FRI</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>SAT</td>
+      <td>${dayFour}</td>
       <td></td>
       <td></td>
       <td></td>
