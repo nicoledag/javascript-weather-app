@@ -12,7 +12,6 @@ const table = document.querySelector('table')
 const tableHeader = document.querySelector('.table-header')
 const currentTime = document.querySelector('.current-time')
 
-
 const updateUI = (data) => {
     // const cityDetails = data.cityDetails;
     // const weather = data.weather;
@@ -22,18 +21,41 @@ const updateUI = (data) => {
     const { cityDetails, weather, forecast } = data;
     console.log(weather);
     console.log(forecast);
-    // debugger;
 
-    let test = new Date(forecast[0].Date).getTime()
+
+
+    // Check if precipitation, description and high/low temp for current day or night.
 
     let sunrise = forecast[0].Sun.EpochRise 
     let sunset = forecast[0].Sun.EpochSet 
-    console.log(sunset)
+    let dayZero = weather.EpochTime
+    
+    let precipitation = null
+      if(dayZero > sunrise && dayZero < sunset){
+        precipitation = forecast[0].Day.PrecipitationProbability
+      }else{
+        precipitation = forecast[0].Night.PrecipitationProbability
+      }
 
-    let diff = test > sunset;
-    console.log(diff); 
+    let description = null
+      if(dayZero > sunrise && dayZero < sunset){
+        description = forecast[0].Day.IconPhrase
+      }else{
+        description = forecast[0].Night.IconPhrase
+      }
+
+    let high = null
+    let low = null
+      if(dayZero > sunrise && dayZero < sunset){
+        high = forecast[0].Temperature.Maximum.Value
+        low = forecast[0].Temperature.Minimum.Value
+      }else{
+        high = "--"
+        low = forecast[0].Temperature.Minimum.Value
+      }
   
 
+    // Check what day it is on the forecast.
     let zero = new Date(forecast[0].Date).getDay();
     switch (zero) {
       case 0:
@@ -184,50 +206,50 @@ const updateUI = (data) => {
     <tr>
       <th>Day</th>
       <th>Description</th>
-      <th>High/Low</th>
+      <th>High/Low &deg;F</th>
       <th>Precip</th>
       <th>Wind</th>
       <th>Humidity</th>
     </tr>
     <tr>
-      <td>${zero}</td>
-      <td>Day: ${forecast[0].Day.IconPhrase} / Night: ${forecast[0].Night.IconPhrase}</td>
-      <td>${forecast[0].Temperature.Maximum.Value} &deg;F / ${forecast[0].Temperature.Minimum.Value} &deg;F</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td class="more-info"><b>${zero}</b> <img src="img/icons/${weather.WeatherIcon}.svg" alt="" class="table-img"></td>
+      <td>${description}</td>
+      <td class="table-center">${high} / ${low}</td>
+      <td class="table-center">${precipitation}%</td>
+      <td class="table-center">${weather.Wind.Direction.English} ${weather.Wind.Speed.Imperial.Value} mph</td>
+      <td class="table-center"> ${weather.RelativeHumidity}</td>
     </tr>
     <tr>
-      <td>${one}</td>
-      <td>Day: ${forecast[1].Day.IconPhrase} / Night: ${forecast[1].Night.IconPhrase}</td>
-      <td>${forecast[1].Temperature.Maximum.Value} &deg;F / ${forecast[1].Temperature.Minimum.Value} &deg;F</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><b>${one}</b> <img src="img/icons/${forecast[1].Day.Icon}.svg" alt=""></td>
+      <td>${forecast[1].Day.IconPhrase} </td>
+      <td class="table-center">${forecast[1].Temperature.Maximum.Value} / ${forecast[1].Temperature.Minimum.Value}</td>
+      <td class="table-center">${forecast[1].Day.PrecipitationProbability}% </td>
+      <td class="table-center">${forecast[1].Day.Wind.Direction.English} ${forecast[1].Day.Wind.Speed.Value} mph</td>
+      <td class="table-center">na</td>
     </tr>
     <tr>
-      <td>${two}</td>
-      <td>Day: ${forecast[2].Day.IconPhrase} / Night: ${forecast[2].Night.IconPhrase}</td>
-      <td>${forecast[2].Temperature.Maximum.Value} &deg;F / ${forecast[2].Temperature.Minimum.Value} &deg;F</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><b>${two}</b> <img src="img/icons/${forecast[2].Day.Icon}.svg" </td>
+      <td>${forecast[2].Day.IconPhrase} </td>
+      <td class="table-center">${forecast[2].Temperature.Maximum.Value} / ${forecast[2].Temperature.Minimum.Value}</td>
+      <td class="table-center">${forecast[2].Day.PrecipitationProbability}% </td>
+      <td class="table-center">${forecast[2].Day.Wind.Direction.English} ${forecast[2].Day.Wind.Speed.Value} mph</td>
+      <td class="table-center">na</td>
     </tr>
     <tr>
-      <td>${three}</td>
-      <td>Day: ${forecast[3].Day.IconPhrase} / Night: ${forecast[3].Night.IconPhrase}</td>
-      <td>${forecast[3].Temperature.Maximum.Value} &deg;F / ${forecast[3].Temperature.Minimum.Value} &deg;F</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><b>${three}</b> <img src="img/icons/${forecast[3].Day.Icon}.svg" </td>
+      <td>${forecast[3].Day.IconPhrase} </td>
+      <td class="table-center">${forecast[3].Temperature.Maximum.Value}/ ${forecast[3].Temperature.Minimum.Value}</td>
+      <td class="table-center">${forecast[3].Day.PrecipitationProbability}% </td>
+      <td class="table-center">${forecast[3].Day.Wind.Direction.English} ${forecast[3].Day.Wind.Speed.Value} mph</td>
+      <td class="table-center">na</td>
     </tr>
     <tr>
-      <td>${four}</td>
-      <td>Day: ${forecast[4].Day.IconPhrase} / Night: ${forecast[4].Night.IconPhrase}</td>
-      <td>${forecast[4].Temperature.Maximum.Value} &deg;F / ${forecast[4].Temperature.Minimum.Value} &deg;F</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><b>${four}</b> <img src="img/icons/${forecast[4].Day.Icon}.svg" </td>
+      <td>${forecast[4].Day.IconPhrase}</td>
+      <td class="table-center">${forecast[4].Temperature.Maximum.Value} / ${forecast[4].Temperature.Minimum.Value} </td>
+      <td class="table-center">${forecast[4].Day.PrecipitationProbability}% </td>
+      <td class="table-center">${forecast[4].Day.Wind.Direction.English} ${forecast[4].Day.Wind.Speed.Value} mph</td>
+      <td class="table-center">na</td>
     </tr>
   </table>
 
@@ -237,13 +259,11 @@ const updateUI = (data) => {
         const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
         icon.setAttribute('src', iconSrc);
 
-        if(weather.IsDayTime === true ){
-            time.src = './img/cloud.jpg'
-        }else{
-            time.src = './img/night-stars.jpg'
-        }
+        let timeSrc = weather.IsDayTime ? time.src = './img/cloud.jpg' : time.src = './img/night-stars.jpg';
+        
 
         //remove the d-none class if present
+
         if(card.classList.contains('d-none')){
             card.classList.remove('d-none');
         };
@@ -294,3 +314,4 @@ cityForm.addEventListener('submit', e => {
     .then(data => updateUI(data))
     .catch(err => console.log(err));
 });
+

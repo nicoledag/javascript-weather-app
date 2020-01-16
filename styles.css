@@ -95,6 +95,11 @@ span {
     background-color: RGB(87, 248, 238);
 }
 
+/* .icon-5day {
+  position: relative;
+
+} */
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
@@ -111,7 +116,13 @@ table, th, td {
   }
   th, td {
     padding: 5px;
+    padding-left: 10px;
     text-align: left;    
+  }
+
+
+  .table-center {
+    text-align: center;
   }
 
   .container-forecast table h1 {
