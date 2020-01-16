@@ -26,6 +26,7 @@ h1 {
 
 .card {
     margin-bottom: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .update-city {
@@ -99,7 +100,9 @@ span {
   position: relative;
 
 } */
-
+table {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
