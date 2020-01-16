@@ -2,7 +2,7 @@
 //.then method once it is resolved to fire a function.
 //.catch method to fire a callback function when there is an error.
 
-const key = 'JOPunuJ58EGeLJqAGOoN9w1ZXmihoXka';
+const key = 'KH5olwOZGiSoxWAArt5yX5ykADVwJGlM';
 
 const getWeather = async (id) => {
     const base = 'http://dataservice.accuweather.com/currentconditions/v1/'
@@ -42,11 +42,4 @@ const getCity = async (city) => {
     // console.log(data[0]);
     return data[0];
 }
-
-// getCity('new york').then(data => {
-//     // console.log(data);
-//     return getWeather(data.Key);
-// }).then(data => {
-//     console.log(data);
-// }).catch(err => console.log(err));
 
