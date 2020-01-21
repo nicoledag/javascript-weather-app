@@ -9,6 +9,12 @@ body {
     font-family: Tahoma;
 }
 
+
+.background-image {
+  background-image: 'img/rain.mp4'
+}
+
+
  .container-daily {
     max-width: 300px;
     height: 75%;

@@ -8,9 +8,10 @@ const currentDay = now.getDay();
 const formatTime = now.toLocaleString();
 const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
-const table = document.querySelector('table')
-const tableHeader = document.querySelector('.table-header')
-const currentTime = document.querySelector('.current-time')
+const table = document.querySelector('table');
+const tableHeader = document.querySelector('.table-header');
+const currentTime = document.querySelector('.current-time');
+const forecast = new Forecast();
 
 const updateUI = (data) => {
     // const cityDetails = data.cityDetails;
@@ -25,7 +26,6 @@ const updateUI = (data) => {
 
 
     // Check if precipitation, description and high/low temp for current day or night.
-
     let sunrise = forecast[0].Sun.EpochRise 
     let sunset = forecast[0].Sun.EpochSet 
     let dayZero = weather.EpochTime
@@ -56,7 +56,14 @@ const updateUI = (data) => {
   
 
     // Check what day it is on the forecast.
-    let zero = new Date(forecast[0].Date).getDay();
+    let test = new Date(forecast[0].Date).getUTCDay();
+    let zero = new Date(weather.LocalObservationDateTime).getUTCDay();
+
+    console.log("ZERO", zero);
+    console.log("TEST", test)
+  
+    // console.log(Epoch(new Date(1579232280)))
+    
     switch (zero) {
       case 0:
         zero = "SUN";
@@ -177,6 +184,13 @@ const updateUI = (data) => {
         four = "SAT";
     }
 
+
+    if(weather.HasPrecipitation === true){
+      body.setAttribute="background-image";
+
+    }
+
+
     currentTime.innerHTML = `
     <h5>As of ${formatTime}</h5>
     `;
@@ -284,43 +298,27 @@ const updateUI = (data) => {
 
 };
 
-const updateCity  = async (city) => {
-    // console.log(city);
-
-    const cityDetails = await getCity(city);
-    // console.log(cityDetails);
-    const weather = await getWeather(cityDetails.Key);
-    // console.log(weather);
-
-    const forecast = await getForecast(cityDetails.Key);
-
-    return {
-       cityDetails: cityDetails,
-       weather: weather, 
-       forecast: forecast
-    };
-};
-
 
 cityForm.addEventListener('submit', e => {
-    e.preventDefault();
+  // prevent default action
+  e.preventDefault();
+  
+  // get city value
+  const city = cityForm.city.value.trim();
+  cityForm.reset();
 
-    // get city value
-    const city = cityForm.city.value.trim();
-    cityForm.reset();
-
-    // update the ui with new city
-    updateCity(city)
+  // update the ui with new city
+  forecast.updateCity(city)
     .then(data => updateUI(data))
     .catch(err => console.log(err));
 
-    //set local storage
-    localStorage.setItem('city', city);
+  // set local storage
+  localStorage.setItem('city', city);
+
 });
 
-
 if(localStorage.getItem('city')){
-  updateCity(localStorage.getItem('city'))
+  forecast.updateCity(localStorage.getItem('city'))
     .then(data => updateUI(data))
     .catch(err => console.log(err));
 }
